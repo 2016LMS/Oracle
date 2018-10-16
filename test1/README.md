@@ -13,7 +13,7 @@ GROUP BY department_name;
 
 ```
 查询语句①用时0.037s；
-![image][C:\Users\Administrator\Desktop\数据库实验二②.png]
+![image]C:\Users\Administrator\Desktop\数据库实验二②.png[url_to_image]
 
 * 查询语句②
 ```

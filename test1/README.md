@@ -13,7 +13,7 @@ GROUP BY department_name;
 
 ```
 查询语句①用时0.037s；
-
+![](https://github.com/2016LMS/Oracle/blob/master/1.1.png)
 
 * 查询语句②
 ```

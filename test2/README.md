@@ -84,5 +84,6 @@ SQL>SELECT a.tablespace_name "表空间名",Total/1024/1024 "大小MB",
  where  a.tablespace_name = b.tablespace_name;
 ```
 * 运行结果：
-![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C%E4%BA%8C-7.png)
-![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C%E4%BA%8C-8.png)
+
+ ![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C%E4%BA%8C-7.png)
+ ![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C%E4%BA%8C-8.png)

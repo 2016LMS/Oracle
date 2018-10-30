@@ -67,6 +67,7 @@ wang
 SQL> exit
 ```
 * 运行结果：
+
 ![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C%E4%BA%8C-6.png)
 ### 步骤四：
 查看数据库的使用情况：

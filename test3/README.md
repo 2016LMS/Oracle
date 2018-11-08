@@ -36,7 +36,7 @@ TO_DATE(' 2019-01-01 00: 00: 00', 'SYYYY-MM-DD HH24: MI: SS',
 );
 ```
 截图：
-
+![]()
 * 创建从表：
 ```
 CREATE TABLE order_details

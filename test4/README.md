@@ -720,7 +720,11 @@ MODIFY PARTITION PARTITION_BEFORE_2018
 NOCOMPRESS;
 ```
 * 运行结果：
-![]()
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-1.png)
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-2.png)
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-3.png)
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-4.png)
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-5.png)
 
 ### 步骤二：
 ```
@@ -730,6 +734,11 @@ select * from ORDERS where  order_id=1;
 select * from ORDER_DETAILS where  order_id=1;
 select * from VIEW_ORDER_DETAILS where order_id=1;
 ```
+* 运行结果：
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-6.png)
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-7.png)
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-8.png)
+
 ```
 --2.递归查询某个员工及其所有下属，子下属员工。
 WITH A (EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID) AS
@@ -742,6 +751,7 @@ SELECT * FROM A;
 --或者
 SELECT * FROM employees START WITH EMPLOYEE_ID = 11 CONNECT BY PRIOR EMPLOYEE_ID = MANAGER_ID;
 ```
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-9.png)
 ```
 --特殊查询语句：
 --查询分区表情况:
@@ -749,6 +759,9 @@ select TABLE_NAME,PARTITION_NAME,HIGH_VALUE,PARTITION_POSITION,TABLESPACE_NAME f
 --查询分区索引情况：
 select * from USER_IND_PARTITIONS;
 ```
+* 运行结果：
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-10.png)
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-11.png)
 ```
 --查询一个分区中的数据
 select count(*) from ORDERS partition(PARTITION_BEFORE_2016);
@@ -759,6 +772,9 @@ select count(*) from ORDERS partition(PARTITION_BEFORE_2017);
 select count(*) from ORDER_DETAILS partition(PARTITION_BEFORE_2016);
 select count(*) from ORDER_DETAILS partition(PARTITION_BEFORE_2017);
 ```
+* 运行结果:
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-12.png)
+
 --收集表的统计信息dbms_stats.gather_table_stats
 --也可以使用ANALYZE TABLE TableName COMPUTE STATISTICS; 但推荐使用dbms_stats.gather_table_stats
 --分析单个表：

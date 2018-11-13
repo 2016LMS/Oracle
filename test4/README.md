@@ -793,6 +793,7 @@ select * from ORDER_DETAILS where order_id=1300;
 select * from orders where customer_name='zhang133000';
 select * from orders where order_date<to_date('2016-01-01','yyyy-mm-dd');
 ```
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-13.png)
 ```
 --查看数据文件的使用情况
 select * from dba_datafiles;
@@ -814,6 +815,7 @@ FROM dba_data_files
 GROUP BY tablespace_name) b
 WHERE a.tablespace_name = b.tablespace_name
 ```
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-14.png)
 ```
 --查看数据文件大小:
 [oracle@cdh3 ~]$ ls -lh /home/oracle/app/oracle/oradata/orcl/pdbtest/pdbtest_users*
@@ -823,3 +825,50 @@ WHERE a.tablespace_name = b.tablespace_name
 -rw-r----- 1 oracle root 2.5G 11月  1 14:53 /home/oracle/app/oracle/oradata/orcl/pdbtest/pdbtest_users02_2.dbf
 */
 ```
+## 查询一：查询某个员工的信息
+```
+select * from ORDERS where  order_id=5;
+select * from ORDER_DETAILS where  order_id=6;
+select * from VIEW_ORDER_DETAILS where order_id=7;
+```
+
+* 运行结果：
+
+![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-6.png)
+## 查询二：递归查询某个员工及其所有下属，子下属员工
+```
+WITH A (EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID) AS
+  (SELECT EMPLOYEE_ID,NAME,EMAIL,PHONE_NUMBER,HIRE_DATE,SALARY,MANAGER_ID,DEPARTMENT_ID
+    FROM employees WHERE employee_ID = 11
+    UNION ALL
+  SELECT B.EMPLOYEE_ID,B.NAME,B.EMAIL,B.PHONE_NUMBER,B.HIRE_DATE,B.SALARY,B.MANAGER_ID,B.DEPARTMENT_ID
+    FROM A, employees B WHERE A.EMPLOYEE_ID = B.MANAGER_ID)
+SELECT * FROM A;
+```
+* 运行结果：
+ 
+ ![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-7.png)
+ ## 查询三：查询订单表，并且包括订单的订单应收货款: Trade_Receivable= sum(订单详单表.ProductNum*订单详单表.ProductPrice)- Discount。
+ ```
+ SELECT  ORDER_DETAILS.PRODUCT_NUM*ORDER_DETAILS.PRODUCT_PRICE -ORDERS.DISCOUNT trade_receivable
+FROM ORDERS,ORDER_DETAILS
+WHERE ORDERS.ORDER_ID=ORDER_DETAILS.ORDER_ID;
+
+ ```
+ * 运行结果
+  
+  ![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-15.png)
+  ### 查询四：.查询订单详表，要求显示订单的客户名称和客户电话，产品类型用汉字描述。
+  ```
+  SELECT PRODUCT_NAME as 产品名,CUSTOMER_NAME as 客户名称,CUSTOMER_TEL as 客户电话
+FROM ORDERS,ORDER_DETAILS
+WHERE ORDERS.ORDER_ID=ORDER_DETAILS.ORDER_ID
+ORDER BY CUSTOMER_NAME;
+
+  ```
+  * 查询结果：
+  
+   ![](https://github.com/2016LMS/Oracle/blob/master/picture/ORACLE%E5%AE%9E%E9%AA%8C4-16.png)
+   
+
+ 
